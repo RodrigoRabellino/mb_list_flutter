@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_rounded_progress_bar/flutter_icon_rounded_progress_bar.dart';
-import 'package:flutter_rounded_progress_bar/flutter_rounded_progress_bar.dart';
-import 'package:flutter_rounded_progress_bar/rounded_progress_bar_style.dart';
+import 'package:step_progress_indicator/step_progress_indicator.dart';
 import '../../constants.dart';
 
 class ChallengeCard extends StatelessWidget {
@@ -47,10 +45,16 @@ class ChallengeCard extends StatelessWidget {
           const SizedBox(
             height: 5,
           ),
-          _ProgressBar(
-            screen: screen,
-            percentage: _percentage,
-            type: title,
+          SizedBox(
+            width: screen.width * 0.8,
+            child: StepProgressIndicator(
+              totalSteps: expected,
+              currentStep: count,
+              selectedColor: kAccentColor,
+              unselectedColor: kExtraColor.withOpacity(0.6),
+              size: 15,
+              roundedEdges: const Radius.circular(15),
+            ),
           ),
           const SizedBox(
             height: 5,
@@ -66,42 +70,6 @@ class ChallengeCard extends StatelessWidget {
                 color: kTextColor, fontWeight: FontWeight.w600, fontSize: 15),
           ),
         ],
-      ),
-    );
-  }
-}
-
-class _ProgressBar extends StatelessWidget {
-  const _ProgressBar({
-    Key? key,
-    required this.screen,
-    required int percentage,
-    required this.type,
-  })  : _percentage = percentage,
-        super(key: key);
-
-  final Size screen;
-  final int _percentage;
-  final String type;
-
-  @override
-  Widget build(BuildContext context) {
-    return SizedBox(
-      width: screen.width * 0.8,
-      child: RoundedProgressBar(
-        height: 25,
-        style: RoundedProgressBarStyle(
-          backgroundProgress: kBackgroundColor,
-          colorProgress: kAccentColor,
-          colorProgressDark: kExtraColor,
-          borderWidth: 0,
-        ),
-        borderRadius: BorderRadius.circular(24),
-        percent: _percentage.toDouble(),
-        childCenter: Icon(
-          type == "Movies" ? Icons.movie_creation : Icons.menu_book,
-          color: kSecondaryColor,
-        ),
       ),
     );
   }

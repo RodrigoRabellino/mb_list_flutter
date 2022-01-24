@@ -26,48 +26,50 @@ class _NavScreenState extends State<NavScreen> {
   }
 
   List<PersistentBottomNavBarItem> _itemList() {
-    return [
-      PersistentBottomNavBarItem(
-        icon: const Icon(Icons.home),
-        title: "Home",
-        activeColorPrimary: kAccentColor,
-        inactiveColorPrimary: kExtraColor,
-        textStyle: const TextStyle(fontSize: 15),
-      ),
-      PersistentBottomNavBarItem(
-        icon: const Icon(Icons.list),
-        title: "List",
-        activeColorPrimary: kAccentColor,
-        inactiveColorPrimary: kExtraColor,
-        textStyle: const TextStyle(fontSize: 15),
-      ),
-      PersistentBottomNavBarItem(
-        icon: const Icon(Icons.toggle_off_outlined),
-        title: "Settings",
-        activeColorPrimary: kAccentColor,
-        inactiveColorPrimary: kExtraColor,
-        textStyle: const TextStyle(fontSize: 15),
-      )
+    final List _screenName = [
+      {"title": "Home", "icon": Icons.home},
+      {"title": "List", "icon": Icons.list_rounded},
+      {"title": "Settings", "icon": Icons.settings},
     ];
+    return _screenName
+        .map(
+          (screen) => PersistentBottomNavBarItem(
+            icon: Icon(screen["icon"]),
+            title: screen["title"],
+            activeColorPrimary: kSecondaryColor,
+            activeColorSecondary: kTextColor,
+            inactiveColorPrimary: kExtraColor,
+            textStyle: const TextStyle(
+              fontSize: 16,
+              fontWeight: FontWeight.w600,
+              color: kTextColor,
+            ),
+          ),
+        )
+        .toList();
   }
 
   @override
   Widget build(BuildContext context) {
-    return PersistentTabView(
-      context,
-      confineInSafeArea: true,
-      hideNavigationBarWhenKeyboardShows: true,
-      backgroundColor: kPrimaryColor,
-      screens: _screensList(),
-      controller: _controller,
-      items: _itemList(),
-      navBarStyle: NavBarStyle.style9,
-      decoration: const NavBarDecoration(
-          borderRadius: BorderRadius.all(Radius.circular(25))
-          // BorderRadius.only(
-          //   topLeft: Radius.circular(25),
-          //   topRight: Radius.circular(25),
-          ),
+    return SafeArea(
+      child: PersistentTabView(
+        context,
+        confineInSafeArea: true,
+        hideNavigationBarWhenKeyboardShows: true,
+        backgroundColor: kPrimaryColor,
+        screens: _screensList(),
+        controller: _controller,
+        items: _itemList(),
+        navBarStyle: NavBarStyle.style9,
+        decoration: const NavBarDecoration(
+            borderRadius: BorderRadius.all(
+          Radius.circular(20),
+        )
+            // BorderRadius.only(
+            //   topLeft: Radius.circular(25),
+            //   topRight: Radius.circular(25),
+            ),
+      ),
     );
   }
 }
