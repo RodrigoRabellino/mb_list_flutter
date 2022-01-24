@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:mb_list_flutter/constants.dart';
-import 'package:mb_list_flutter/screens/home_page/home_page.dart';
+import 'package:mb_list_flutter/screens/home_screen/home_screen.dart';
+
+import 'package:mb_list_flutter/screens/list_screen/list_screen.dart';
+import 'package:mb_list_flutter/screens/settings_screen/settings_screen.dart';
 import 'package:persistent_bottom_nav_bar/persistent-tab-view.dart';
 
 class NavScreen extends StatefulWidget {
@@ -16,9 +19,9 @@ class _NavScreenState extends State<NavScreen> {
 
   List<Widget> _screensList() {
     return const [
-      HomePage(),
-      Scaffold(),
-      Scaffold(),
+      HomeScreen(),
+      ListPage(),
+      SettingScreen(),
     ];
   }
 
@@ -27,22 +30,22 @@ class _NavScreenState extends State<NavScreen> {
       PersistentBottomNavBarItem(
         icon: const Icon(Icons.home),
         title: "Home",
-        activeColorPrimary: kExtraColor,
-        inactiveColorPrimary: kAccentColor,
+        activeColorPrimary: kAccentColor,
+        inactiveColorPrimary: kExtraColor,
         textStyle: const TextStyle(fontSize: 15),
       ),
       PersistentBottomNavBarItem(
         icon: const Icon(Icons.list),
         title: "List",
-        activeColorPrimary: kExtraColor,
-        inactiveColorPrimary: kAccentColor,
+        activeColorPrimary: kAccentColor,
+        inactiveColorPrimary: kExtraColor,
         textStyle: const TextStyle(fontSize: 15),
       ),
       PersistentBottomNavBarItem(
         icon: const Icon(Icons.toggle_off_outlined),
         title: "Settings",
-        activeColorPrimary: kExtraColor,
-        inactiveColorPrimary: kAccentColor,
+        activeColorPrimary: kAccentColor,
+        inactiveColorPrimary: kExtraColor,
         textStyle: const TextStyle(fontSize: 15),
       )
     ];
@@ -52,6 +55,8 @@ class _NavScreenState extends State<NavScreen> {
   Widget build(BuildContext context) {
     return PersistentTabView(
       context,
+      confineInSafeArea: true,
+      hideNavigationBarWhenKeyboardShows: true,
       backgroundColor: kPrimaryColor,
       screens: _screensList(),
       controller: _controller,
