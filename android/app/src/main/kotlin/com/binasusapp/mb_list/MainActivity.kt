@@ -1,4 +1,4 @@
-package com.example.mb_list_flutter
+package com.binasusapp.mb_list
 
 import io.flutter.embedding.android.FlutterActivity
 

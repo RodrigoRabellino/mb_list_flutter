@@ -53,7 +53,7 @@ class ChallengeCard extends StatelessWidget {
               selectedColor: kAccentColor,
               unselectedColor: kExtraColor.withOpacity(0.6),
               size: 15,
-              roundedEdges: const Radius.circular(15),
+              roundedEdges: const Radius.circular(100),
             ),
           ),
           const SizedBox(
