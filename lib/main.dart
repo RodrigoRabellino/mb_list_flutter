@@ -17,7 +17,11 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'mb List',
       theme: ThemeData(
-        primarySwatch: Colors.blue,
+        colorScheme: ColorScheme.fromSwatch().copyWith(
+          primary: kAccentColor,
+          secondary: kSecondaryColor,
+          background: kBackgroundColor,
+        ),
         scaffoldBackgroundColor: kBackgroundColor,
       ),
       home: const NavScreen(),

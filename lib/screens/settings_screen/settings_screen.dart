@@ -1,5 +1,5 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:mb_list_flutter/screens/login_screen/login_screen.dart';
 
 class SettingScreen extends StatefulWidget {
   const SettingScreen({Key? key}) : super(key: key);
@@ -12,28 +12,12 @@ class _SettingScreenState extends State<SettingScreen> {
   @override
   void initState() {
     super.initState();
-    getUsers();
-  }
-
-  void getUsers() async {
-    try {
-      CollectionReference collectionReference =
-          FirebaseFirestore.instance.collection("users");
-
-      QuerySnapshot users = await collectionReference.get();
-
-      if (users.docs.isNotEmpty) {
-        for (var doc in users.docs) {
-          print(doc.data());
-        }
-      }
-    } on Exception catch (e) {
-      print("soy un error $e");
-    }
   }
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold();
+    return const Scaffold(
+      body: LoginScreen(),
+    );
   }
 }

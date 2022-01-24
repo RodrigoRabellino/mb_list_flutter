@@ -8,3 +8,9 @@ const kBackgroundColor = Color.fromARGB(155, 191, 159, 134);
 const kAccentColor = Color.fromARGB(255, 162, 67, 51);
 
 const double kDefaultPadding = 20.0;
+
+final BoxShadow kDefaultShadow = BoxShadow(
+  color: kSecondaryColor.withOpacity(0.5),
+  offset: const Offset(4, 5),
+  blurRadius: 5,
+);
